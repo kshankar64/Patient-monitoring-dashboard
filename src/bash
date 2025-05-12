@@ -1,0 +1,23 @@
+# Initialize repository
+git init
+git add .
+git commit -m "feat: Complete patient monitoring system with real-time dashboard"
+
+# Set up AWS credentials (required for deployment)
+export AWS_ACCESS_KEY_ID="your-access-key"
+export AWS_SECRET_ACCESS_KEY="your-secret-key"
+
+# Deploy infrastructure
+cd infrastructure
+terraform init
+terraform apply -auto-approve
+
+# Deploy backend
+cd ../backend
+npm install
+serverless deploy
+
+# Start frontend
+cd ../frontend
+npm install
+npm start
